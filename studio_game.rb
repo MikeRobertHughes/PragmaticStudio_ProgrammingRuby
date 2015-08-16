@@ -1,15 +1,44 @@
 # studio_game.rb 
 
-def time
-  current_time = Time.new
-  current_time.strftime("%I:%M:%S")
+
+class Player
+  attr_accessor :name
+  attr_reader :health
+
+  def initialize(name, health=100)
+    @name = name.capitalize
+    @health = health
+  end
+
+  def to_s
+    "I'm #{@name} with a health of #{@health} and a score of #{score}."
+  end
+
+  def blam
+    @health -= 10
+    puts "#{@name} got blammed!"
+  end
+
+  def w00t
+    @health += 15
+    puts "#{@name} got w00ted!"
+  end
+
+  def score
+    @health + @name.length
+  end
 end
 
-def say_hello(name, health=100)
-  "I'm #{name.capitalize} with a health of #{health} as of #{time}."
-end
+player1 = Player.new("moe")
+player2 = Player.new("larry", 60)
+player3 = Player.new("curly", 125)
 
-puts say_hello("larry", 60)
-puts say_hello("curly", 125)
-puts say_hello("moe")
-puts say_hello("shemp", 90)
+puts player1
+puts player2
+puts player3
+
+player3.blam
+puts player3
+
+player3.w00t
+puts player3
