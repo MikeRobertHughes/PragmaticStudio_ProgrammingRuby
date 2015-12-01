@@ -36,4 +36,24 @@ describe 'Player' do
 
     @player.health.should == @initial_health - 10
   end
+
+  context 'with an initial health of 150' do
+    before do
+      @player = Player.new("curly", 150)
+    end
+
+    it 'is a strong player' do
+      @player.should be_strong
+    end
+  end
+
+  context 'with an initial health of 100' do
+    before do
+      @player = Player.new("curly", 100)
+    end
+
+    it 'is a wimpy player' do
+      @player.should_not be_strong
+    end
+  end
 end
