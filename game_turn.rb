@@ -7,6 +7,7 @@ module GameTurn
   def self.take_turn(player)
     die = Die.new
     number_rolled = die.roll
+    treasure = TreasureTrove.random
 
     case number_rolled
     when 1..2
@@ -16,5 +17,7 @@ module GameTurn
     else
       player.w00t
     end
+
+    player.found_treasure(treasure)
   end
 end
