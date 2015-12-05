@@ -52,5 +52,14 @@ describe Game do
 
     player1 = Player.new("moe")
     player2 = Player.new("larry")
+
+    game.add_player(player1)
+    game.add_player(player2)
+
+    player1.found_treasure(Treasure.new(:hammer, 50))
+    player1.found_treasure(Treasure.new(:hammer, 50))
+    player2.found_treasure(Treasure.new(:crowbar, 400))
+
+    game.total_points.should == 500
   end
 end

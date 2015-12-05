@@ -45,6 +45,8 @@ class Game
       puts "#{player.points} grand total points"
     end
 
+    puts "\n#{total_points} total points from treasures found"
+
     strong_players, wimpy_players = @players.partition { |player| player.strong? }
 
     puts "\n#{strong_players.size} strong players:"
@@ -58,5 +60,9 @@ class Game
       high_score_name = player.name.ljust(20, '.')
       puts "#{high_score_name} #{player.score}"
     end
+  end
+
+  def total_points
+    @players.reduce(0) { |sum, player| sum + player.points }
   end
 end
