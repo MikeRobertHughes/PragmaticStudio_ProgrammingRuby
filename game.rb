@@ -40,6 +40,11 @@ class Game
   def print_stats
     puts "\n#{@title}'s Statistics:"
 
+    @players.each do |player|
+      puts "\n#{player.name}'s point totals:"
+      puts "#{player.points} grand total points"
+    end
+
     strong_players, wimpy_players = @players.partition { |player| player.strong? }
 
     puts "\n#{strong_players.size} strong players:"
@@ -47,8 +52,6 @@ class Game
 
     puts "\n#{wimpy_players.size} wimpy players:"
     wimpy_players.each { |player| print_name_and_health(player) }
-
-
 
     puts "\n#{@title}'s High Scores:"
     @players.sort.each do |player|
