@@ -46,4 +46,11 @@ describe Game do
 
     player.points.should_not be_zero
   end
+
+  it "computes total points as the sum of all player points" do
+    game = Game.new("Knuckleheads")
+
+    player1 = Player.new("moe")
+    player2 = Player.new("larry")
+  end
 end
