@@ -1,3 +1,5 @@
+require_relative "treasure_trove"
+
 class Player
   attr_accessor :name
   attr_reader :health
@@ -6,6 +8,12 @@ class Player
     @name = name.capitalize
     @health = health
     @found_treasures = Hash.new(0)
+  end
+
+  def each_found_treasure
+    @found_treasures.each do |name, points|
+      yield Treasure.new(name, points)
+    end
   end
 
   def found_treasure(treasure)
