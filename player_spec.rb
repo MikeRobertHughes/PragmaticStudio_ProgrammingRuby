@@ -80,6 +80,14 @@ describe 'Player' do
     ]
   end
 
+  it 'parses a CSV string' do
+    line = "Shemp,130"
+    player = Player.csv_to_player(line)
+
+    player.name.should == "Shemp"
+    player.health.should == 130
+  end
+
   context 'with an initial health of 150' do
     before do
       @player = Player.new("curly", 150)

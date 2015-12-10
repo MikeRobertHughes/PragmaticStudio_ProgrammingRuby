@@ -10,6 +10,11 @@ class Player
     @found_treasures = Hash.new(0)
   end
 
+  def self.csv_to_player(line)
+    name, health = line.split(",")
+    Player.new(name, Integer(health))
+  end
+
   def each_found_treasure
     @found_treasures.each do |name, points|
       yield Treasure.new(name, points)
